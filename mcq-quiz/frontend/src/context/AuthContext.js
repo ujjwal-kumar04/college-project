@@ -17,8 +17,14 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
-  // Set up axios defaults
-  axios.defaults.baseURL = 'https://college-project-07on.onrender.com/api';
+  // Set up axios defaults with environment-aware base URL
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 
+    (process.env.NODE_ENV === 'production' 
+      ? 'https://college-project-07on.onrender.com/api'
+      : 'http://localhost:5001/api');
+  
+  axios.defaults.baseURL = API_BASE_URL;
+  axios.defaults.timeout = parseInt(process.env.REACT_APP_API_TIMEOUT) || 30000; // 30 second timeout for production
   
   const fetchUser = async () => {
     try {
@@ -44,7 +50,12 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('/auth/login', { email, password });
+      console.log('Attempting login to:', API_BASE_URL);
+      const response = await axios.post('/auth/login', { email, password }, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
       const { token: newToken, user: userData } = response.data;
       
       localStorage.setItem('token', newToken);
@@ -55,7 +66,17 @@ export const AuthProvider = ({ children }) => {
       toast.success('Login successful!');
       return { success: true };
     } catch (error) {
-      const message = error.response?.data?.message || 'Login failed';
+      console.error('Login error:', error);
+      let message = 'Login failed';
+      
+      if (error.code === 'ERR_NETWORK') {
+        message = 'Network error. Please check your internet connection.';
+      } else if (error.response?.status === 0) {
+        message = 'Unable to connect to server. Please try again.';
+      } else {
+        message = error.response?.data?.message || 'Login failed';
+      }
+      
       toast.error(message);
       return { success: false, message };
     }
