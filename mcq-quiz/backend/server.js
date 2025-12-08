@@ -22,15 +22,13 @@ if (!fs.existsSync(uploadsDir)) {
 
 // Middleware
 app.use(express.json());
-// app.use(cors({
-//     origin: [
-//         'http://localhost:3000',
-//         'http://localhost:3001'
-//     ],
-//     credentials: true
-// }));
 app.use(cors({
-    origin: "*"
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:3001',
+        'https://college-project-roan.vercel.app'  
+    ],
+    credentials: true
 }));
 
 

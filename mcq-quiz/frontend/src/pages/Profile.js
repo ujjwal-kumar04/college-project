@@ -88,7 +88,7 @@ const Profile = () => {
 
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'https://salon-h9yi.onrender.com/api/auth/upload-profile-image',
+        'https://college-project-07on.onrender.com/api/auth/upload-profile-image',
         formData,
         {
           headers: {
@@ -141,7 +141,7 @@ const Profile = () => {
                   <img
                     className="w-32 h-32 rounded-full object-cover shadow-md group-hover:opacity-80 transition-opacity"
                     src={user.profileImage 
-                      ? `https://salon-h9yi.onrender.com${user.profileImage}` 
+                      ? `https://college-project-07on.onrender.com${user.profileImage}` 
                       : `https://ui-avatars.com/api/?name=${user.name}&background=random`
                     }
                     alt="Profile"
@@ -310,7 +310,7 @@ const Profile = () => {
             </button>
             <img
               src={user.profileImage 
-                ? `https://salon-h9yi.onrender.com${user.profileImage}` 
+                ? `https://college-project-07on.onrender.com${user.profileImage}` 
                 : `https://ui-avatars.com/api/?name=${user.name}&background=random`
               }
               alt="Profile Full View"

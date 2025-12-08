@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
 
   // Set up axios defaults
-  axios.defaults.baseURL = 'https://salon-h9yi.onrender.com/api';
+  axios.defaults.baseURL = 'https://college-project-07on.onrender.com/api';
   
   const fetchUser = async () => {
     try {
