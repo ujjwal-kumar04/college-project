@@ -24,15 +24,16 @@ if (!fs.existsSync(uploadsDir)) {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// CORS configuration for production deployment
-const allowedOrigins = [
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'https://college-project-roan.vercel.app',
-    'https://college-project-07on.onrender.com'
-];
+app.use(cors({
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:3001',
+        'https://college-project-roan.vercel.app',  
+        'https://college-project-git-main-ujjwal-kumar04s-projects.vercel.app'
+    ],
+    credentials: true
+}));
 
-// Add additional origins from environment variable if present
 if (process.env.ALLOWED_ORIGINS) {
     const envOrigins = process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim());
     allowedOrigins.push(...envOrigins);
