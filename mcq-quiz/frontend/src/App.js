@@ -39,7 +39,6 @@ const ProtectedRoute = ({ children, requiredRole }) => {
   return children;
 };
 
-// Public Route Component (redirect if already authenticated)
 const PublicRoute = ({ children }) => {
   const { isAuthenticated, user, loading } = useAuth();
 
@@ -195,9 +194,9 @@ const AppContent = () => {
 
       {/* Toast notifications */}
       <Toaster
-        position="top-right"
+        position="top-center"
         toastOptions={{
-          duration: 4000,
+          duration: 3000,
           style: {
             background: 'var(--toast-bg)',
             color: 'var(--toast-color)',

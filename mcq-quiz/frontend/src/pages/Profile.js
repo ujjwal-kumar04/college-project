@@ -70,13 +70,13 @@ const Profile = () => {
     // Validate file type
     const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
     if (!validTypes.includes(file.type)) {
-      toast.error('केवल JPG, PNG या GIF फाइलें अपलोड करें');
+      toast.error('only jpg, png, gif files are allowed');
       return;
     }
 
     // Validate file size (5MB)
     if (file.size > 5 * 1024 * 1024) {
-      toast.error('फाइल साइज़ 5MB से कम होना चाहिए');
+      toast.error('file size must be less than 5MB');
       return;
     }
 
@@ -100,11 +100,11 @@ const Profile = () => {
 
       if (response.data.success !== false) {
         setUser(response.data.user);
-        toast.success('प्रोफाइल फोटो सफलतापूर्वक अपडेट हो गई!');
+        toast.success('profile photo successfully updated');
       }
     } catch (error) {
       console.error('Photo upload error:', error);
-      toast.error('फोटो अपलोड करने में त्रुटि हुई');
+      toast.error('error uploading photo. please try again.');
     } finally {
       setUploadingImage(false);
     }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Create form data for Web3Forms
+      
       const formDataToSend = new FormData();
       formDataToSend.append('access_key', 'd474f866-474d-4169-9a26-9a975d376a07');
       formDataToSend.append('name', formData.name);
@@ -30,7 +31,7 @@ const Contact = () => {
       formDataToSend.append('phone', formData.phone);
       formDataToSend.append('message', formData.message);
 
-      // Send to Web3Forms
+    
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formDataToSend
@@ -39,19 +40,20 @@ const Contact = () => {
       const result = await response.json();
 
       if (result.success) {
-        toast.success('आपका संदेश सफलतापूर्वक भेजा गया है! हम जल्द ही आपसे संपर्क करेंगे।');
+        toast.success('Your message has been sent successfully! We will contact you soon.');
         setFormData({ name: '', email: '', phone: '', message: '' });
       } else {
-        toast.error('संदेश भेजने में समस्या हुई है। कृपया पुनः प्रयास करें।');
+        toast.error('There was a problem sending your message. Please try again.');
       }
       
     } catch (error) {
       console.error('Contact form error:', error);
-      toast.error('संदेश भेजने में समस्या हुई है। कृपया पुनः प्रयास करें।');
+      toast.error('There was a problem sending your message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
@@ -155,7 +157,7 @@ const Contact = () => {
                 {isSubmitting ? (
                   <>
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                    भेजा जा रहा है...
+                    sending...
                   </>
                 ) : (
                   <>
@@ -196,7 +198,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-gray-900 dark:text-white">Phone</h3>
-                    <p className="text-gray-600 dark:text-gray-400">+91 9127-3912-73</p>
+                    <p className="text-gray-600 dark:text-gray-400">+91 7257981450</p>
                   </div>
                 </div>
                 
@@ -210,8 +212,8 @@ const Contact = () => {
                   <div>
                     <h3 className="text-lg font-medium text-gray-900 dark:text-white">Office</h3>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Education Campus<br />
-                      New Delhi, India
+                      BBIT College<br />
+                      Kolkata, India
                     </p>
                   </div>
                 </div>
@@ -226,9 +228,14 @@ const Contact = () => {
               <p className="mb-6 opacity-90">
                 Check out our Help Center for frequently asked questions and step-by-step guides.
               </p>
-              <button className="bg-white text-blue-600 px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-                Visit Help Center
-              </button>
+              
+
+<Link to="/help">
+  <button className="bg-white text-blue-600 px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+    Visit Help Center
+  </button>
+</Link>
+
             </div>
 
           </div>
