@@ -111,7 +111,7 @@ const Help = () => {
                Email Support
               </Link>
               <a 
-                href="https://wa.me/917257981450?text=Hello%20I%20am%20interested"
+                href="https://wa.me/917257981450?text=Hello%20I%20need%20help%20with%20McqQuiz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors text-center"

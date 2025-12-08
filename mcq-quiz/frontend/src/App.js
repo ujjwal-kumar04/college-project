@@ -194,7 +194,7 @@ const AppContent = () => {
 
       {/* Toast notifications */}
       <Toaster
-        position="top-center"
+        position="bottom-left"
         toastOptions={{
           duration: 3000,
           style: {
