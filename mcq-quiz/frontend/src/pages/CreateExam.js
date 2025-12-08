@@ -10,7 +10,7 @@ const CreateExam = () => {
     title: '',
     subject: '',
     description: '',
-    duration: 60,
+    duration: '',
     startTime: '',
     endTime: ''
   });

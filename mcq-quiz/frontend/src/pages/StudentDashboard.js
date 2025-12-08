@@ -55,9 +55,7 @@ const StudentDashboard = () => {
       alert('Please enter the exam key.');
       return;
     }
-    // Note: In a real app, you'd verify the key against the selectedExam on the backend
-    // For this implementation, we assume the key is correct and navigate.
-    // The joinExamByKey function already provides robust backend validation.
+    
     joinExamByKey(selectedExam._id);
     closeModal();
   };

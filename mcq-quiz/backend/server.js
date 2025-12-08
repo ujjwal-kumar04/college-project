@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const detect = require('detect-port').default;
+const path = require('path');
+const fs = require('fs');
 
 // Check for JWT_SECRET
 if (!process.env.JWT_SECRET) {
@@ -11,6 +13,12 @@ if (!process.env.JWT_SECRET) {
 }
 
 const app = express();
+
+// Create uploads directory if it doesn't exist
+const uploadsDir = path.join(__dirname, 'uploads', 'profiles');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 // Middleware
 app.use(express.json());
@@ -21,6 +29,9 @@ app.use(cors({
     ],
     credentials: true
 }));
+
+// Static files middleware for serving uploaded images
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Database connection
 const connectDB = async () => {
@@ -43,6 +54,7 @@ connectDB();
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/exams', require('./routes/exams'));
 app.use('/api/results', require('./routes/results'));
+app.use('/api/contact', require('./routes/contact'));
 
 // Basic route
 app.get('/', (req, res) => {

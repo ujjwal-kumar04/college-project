@@ -1,18 +1,30 @@
 {
-  "name": "mcq-quiz-root",
+  "name": "mcq-quiz-portal",
   "version": "1.0.0",
-  "description": "McqQuiz - MCQ Exam Portal Root Package",
+  "description": "Complete MCQ Quiz Portal with React Frontend and Express Backend",
+  "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && npm run dev",
     "client": "cd frontend && npm start",
-    "install-deps": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "build": "cd frontend && npm run build"
+    "build": "cd frontend && npm run build",
+    "install-server": "cd backend && npm install",
+    "install-client": "cd frontend && npm install",
+    "install-all": "npm run install-server && npm run install-client",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "mcq",
+    "quiz",
+    "exam",
+    "portal",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.0"
-  },
-  "keywords": ["mcq", "quiz", "exam", "portal", "mern"],
-  "author": "",
-  "license": "ISC"
+  }
 }

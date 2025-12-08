@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { createContext, useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 const AuthContext = createContext();
@@ -103,6 +103,7 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     user,
+    setUser,
     loading,
     token,
     isAuthenticated: !!user,

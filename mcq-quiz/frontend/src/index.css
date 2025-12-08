@@ -53,6 +53,18 @@
     @apply bg-white dark:bg-dark-900 border-b border-gray-200 dark:border-dark-700 backdrop-blur-sm;
   }
   
+  .nav-link {
+    @apply text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium transition-colors duration-200;
+  }
+  
+  .menu-item {
+    @apply flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200;
+  }
+  
+  .mobile-nav-link {
+    @apply block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200;
+  }
+  
   .sidebar {
     @apply bg-white dark:bg-dark-900 border-r border-gray-200 dark:border-dark-700;
   }

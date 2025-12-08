@@ -1,9 +1,39 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
+const path = require('path');
 const User = require('../models/User');
 const { auth } = require('../middleware/auth');
 
 const router = express.Router();
+
+// Configure multer for profile image upload
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/profiles/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, 'profile-' + req.user._id + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 5 * 1024 * 1024 // 5MB limit
+    },
+    fileFilter: function (req, file, cb) {
+        const filetypes = /jpeg|jpg|png|gif/;
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = filetypes.test(file.mimetype);
+        
+        if (mimetype && extname) {
+            return cb(null, true);
+        } else {
+            cb(new Error('Only image files are allowed'));
+        }
+    }
+});
 
 // Generate JWT token
 const generateToken = (userId) => {
@@ -180,6 +210,47 @@ router.put('/profile', auth, async (req, res) => {
     } catch (error) {
         console.error('Profile update error:', error);
         res.status(500).json({ message: 'Server error during profile update' });
+    }
+});
+
+// @route   POST /api/auth/upload-profile-image
+// @desc    Upload profile image
+// @access  Private
+router.post('/upload-profile-image', auth, upload.single('profileImage'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ message: 'No file uploaded' });
+        }
+
+        const user = await User.findById(req.user._id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Update user profile image path
+        user.profileImage = `/uploads/profiles/${req.file.filename}`;
+        await user.save();
+
+        res.json({
+            message: 'Profile image uploaded successfully',
+            profileImage: user.profileImage,
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                department: user.department,
+                rollNumber: user.rollNumber,
+                class: user.class,
+                profileImage: user.profileImage,
+                linkedin: user.linkedin,
+                leetcode: user.leetcode,
+                github: user.github
+            }
+        });
+    } catch (error) {
+        console.error('Profile image upload error:', error);
+        res.status(500).json({ message: 'Server error during image upload' });
     }
 });
 

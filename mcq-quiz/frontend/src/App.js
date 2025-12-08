@@ -1,23 +1,24 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 
 // Components
-import Navbar from './components/Navbar';
 import Loading from './components/Loading';
+import Navbar from './components/Navbar';
 
 // Pages
-import Login from './pages/Login';
-import Register from './pages/Register';
-import TeacherDashboard from './pages/TeacherDashboard';
-import StudentDashboard from './pages/StudentDashboard';
+import Contact from './pages/Contact';
 import CreateExam from './pages/CreateExam';
-import TakeExam from './pages/TakeExam';
-import ExamResults from './pages/ExamResults';
-import Profile from './pages/Profile';
 import DetailedResult from './pages/DetailedResult';
+import ExamResults from './pages/ExamResults';
+import Help from './pages/Help';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Register from './pages/Register';
+import StudentDashboard from './pages/StudentDashboard';
+import TakeExam from './pages/TakeExam';
+import TeacherDashboard from './pages/TeacherDashboard';
 
 // Protected Route Component
 const ProtectedRoute = ({ children, requiredRole }) => {
@@ -144,6 +145,24 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          } 
+        />
+
+        <Route 
+          path="/help" 
+          element={
+            <ProtectedRoute>
+              <Help />
+            </ProtectedRoute>
+          } 
+        />
+
+        <Route 
+          path="/contact" 
+          element={
+            <ProtectedRoute>
+              <Contact />
             </ProtectedRoute>
           } 
         />
