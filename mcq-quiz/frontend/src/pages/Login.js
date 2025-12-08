@@ -163,21 +163,7 @@ const Login = () => {
         </form>
 
         {/* Demo Accounts */}
-        <div className="mt-8 border-t border-gray-200 dark:border-dark-700 pt-6">
-          <h3 className="text-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
-            Demo Accounts
-          </h3>
-          <div className="grid grid-cols-1 gap-3">
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
-              <p className="text-xs font-medium text-blue-800 dark:text-blue-200">Teacher Account</p>
-              <p className="text-xs text-blue-600 dark:text-blue-300">teacher@demo.com / password123</p>
-            </div>
-            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3">
-              <p className="text-xs font-medium text-green-800 dark:text-green-200">Student Account</p>
-              <p className="text-xs text-green-600 dark:text-green-300">student@demo.com / password123</p>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </div>
   );
