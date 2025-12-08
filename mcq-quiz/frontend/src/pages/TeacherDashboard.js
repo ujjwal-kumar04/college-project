@@ -34,7 +34,7 @@ const TeacherDashboard = () => {
   const fetchExams = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5001/api/exams/teacher', {
+      const response = await axios.get('https://salon-h9yi.onrender.com/api/exams/teacher', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const fetchedExams = response.data.exams;

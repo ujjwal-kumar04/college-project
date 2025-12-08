@@ -33,7 +33,7 @@ const TakeExam = () => {
   const fetchExamQuestions = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:5001/api/exams/${examId}/questions`, {
+      const response = await axios.get(`https://salon-h9yi.onrender.com/api/exams/${examId}/questions`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -77,7 +77,7 @@ const TakeExam = () => {
         selectedOption: answers[index]
       }));
 
-      const response = await axios.post('http://localhost:5001/api/results/submit', {
+      const response = await axios.post('https://salon-h9yi.onrender.com/api/results/submit', {
         examId: exam._id,
         answers: formattedAnswers,
         timeTaken: timeTaken

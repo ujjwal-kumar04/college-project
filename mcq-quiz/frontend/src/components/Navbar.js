@@ -66,7 +66,7 @@ const Navbar = () => {
               <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 transition-colors cursor-pointer">
                 <img
                   src={user?.profileImage 
-                    ? `http://localhost:5001${user.profileImage}` 
+                    ? `https://salon-h9yi.onrender.com${user.profileImage}` 
                     : `https://ui-avatars.com/api/?name=${user?.name}&background=4F46E5`
                   }
                   alt="Profile"
