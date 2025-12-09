@@ -194,7 +194,7 @@ const AppContent = () => {
 
       {/* Toast notifications */}
       <Toaster
-        position="top-right"
+        position="bottom-left"
         reverseOrder={false}
         gutter={8}
         containerStyle={{

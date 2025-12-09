@@ -76,13 +76,6 @@ const TakeExam = () => {
       ...prev,
       [questionIndex]: optionIndex
     }));
-    
-    // Auto-advance to next question after 500ms if not the last question
-    if (questionIndex < exam.questions.length - 1) {
-      setTimeout(() => {
-        setCurrentQuestion(questionIndex + 1);
-      }, 500);
-    }
   };
 
   const handleSubmitExam = async () => {

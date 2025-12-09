@@ -30,7 +30,7 @@ export const ThemeProvider = ({ children }) => {
   const toggleDarkMode = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
-    toast.success(newMode ? '🌙 Dark mode enabled' : '☀️ Light mode enabled', {
+    toast.success(newMode ? ' Dark mode enabled' : ' Light mode enabled', {
       duration: 2000,
       style: {
         background: newMode ? '#1f2937' : '#ffffff',
