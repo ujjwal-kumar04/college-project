@@ -138,7 +138,7 @@ const StudentDashboard = () => {
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <header className="mb-10">
           <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
-            Welcome, {user?.name}!
+            Welcome, {user?.name}
           </h1>
           <p className="mt-2 text-lg text-gray-500 dark:text-gray-400">
             Your learning journey starts here.
