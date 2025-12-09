@@ -66,11 +66,14 @@ const Navbar = () => {
               <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 transition-colors cursor-pointer">
                 <img
                   src={user?.profileImage 
-                    ? `https://college-project-07on.onrender.com${user.profileImage}` 
-                    : `https://ui-avatars.com/api/?name=${user?.name}&background=4F46E5`
+                    ? `${process.env.REACT_APP_API_BASE_URL?.replace('/api', '') || 'https://college-project-07on.onrender.com'}${user.profileImage}` 
+                    : `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=4F46E5`
                   }
                   alt="Profile"
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=4F46E5`;
+                  }}
                 />
               </div>
             </Link>

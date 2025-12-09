@@ -87,8 +87,10 @@ const Profile = () => {
       formData.append('profileImage', file);
 
       const token = localStorage.getItem('token');
+      const API_URL = process.env.REACT_APP_API_BASE_URL || 'https://college-project-07on.onrender.com/api';
+      
       const response = await axios.post(
-        'https://college-project-07on.onrender.com/api/auth/upload-profile-image',
+        `${API_URL}/auth/upload-profile-image`,
         formData,
         {
           headers: {
@@ -98,13 +100,22 @@ const Profile = () => {
         }
       );
 
-      if (response.data.success !== false) {
+      console.log('Upload response:', response.data);
+      
+      if (response.data.user) {
         setUser(response.data.user);
-        toast.success('profile photo successfully updated');
+        toast.success('Profile photo successfully updated!');
+      } else {
+        throw new Error('No user data in response');
       }
     } catch (error) {
       console.error('Photo upload error:', error);
-      toast.error('error uploading photo. please try again.');
+      console.error('Error response:', error.response?.data);
+      
+      const errorMessage = error.response?.data?.message || 
+                          error.message || 
+                          'Error uploading photo. Please try again.';
+      toast.error(errorMessage);
     } finally {
       setUploadingImage(false);
     }
@@ -141,10 +152,13 @@ const Profile = () => {
                   <img
                     className="w-32 h-32 rounded-full object-cover shadow-md group-hover:opacity-80 transition-opacity"
                     src={user.profileImage 
-                      ? `https://college-project-07on.onrender.com${user.profileImage}` 
-                      : `https://ui-avatars.com/api/?name=${user.name}&background=random`
+                      ? `${process.env.REACT_APP_API_BASE_URL?.replace('/api', '') || 'https://college-project-07on.onrender.com'}${user.profileImage}` 
+                      : `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random`
                     }
                     alt="Profile"
+                    onError={(e) => {
+                      e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random`;
+                    }}
                   />
                   <div className="absolute inset-0 w-32 h-32 rounded-full bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
                     <svg className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">

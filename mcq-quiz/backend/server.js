@@ -106,6 +106,6 @@ detect(PORT, (err, availablePort) => {
     }
 
     const portToUse = PORT === availablePort ? PORT : availablePort;
-    console.log(`🚀 Server running on port ${portToUse}`);
+    console.log(` Server running on port ${portToUse}`);
     app.listen(portToUse);
 });

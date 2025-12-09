@@ -2,18 +2,32 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 const User = require('../models/User');
 const { auth } = require('../middleware/auth');
 
 const router = express.Router();
 
+// Ensure uploads directory exists
+const uploadsDir = path.join(__dirname, '../uploads/profiles');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+    console.log('✅ Created uploads directory:', uploadsDir);
+}
+
 // Configure multer for profile image upload
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/profiles/');
+        const uploadPath = path.join(__dirname, '../uploads/profiles/');
+        // Double check directory exists
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath, { recursive: true });
+        }
+        cb(null, uploadPath);
     },
     filename: function (req, file, cb) {
-        cb(null, 'profile-' + req.user._id + '-' + Date.now() + path.extname(file.originalname));
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, 'profile-' + req.user._id + '-' + uniqueSuffix + path.extname(file.originalname));
     }
 });
 
@@ -23,6 +37,7 @@ const upload = multer({
         fileSize: 5 * 1024 * 1024 // 5MB limit
     },
     fileFilter: function (req, file, cb) {
+        console.log('📁 File upload attempt:', file.originalname, file.mimetype);
         const filetypes = /jpeg|jpg|png|gif/;
         const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
         const mimetype = filetypes.test(file.mimetype);
@@ -30,10 +45,33 @@ const upload = multer({
         if (mimetype && extname) {
             return cb(null, true);
         } else {
-            cb(new Error('Only image files are allowed'));
+            cb(new Error('Only image files (jpeg, jpg, png, gif) are allowed'));
         }
     }
 });
+
+// Multer error handler
+const handleMulterError = (err, req, res, next) => {
+    if (err instanceof multer.MulterError) {
+        if (err.code === 'LIMIT_FILE_SIZE') {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'File size must be less than 5MB' 
+            });
+        }
+        return res.status(400).json({ 
+            success: false, 
+            message: `Upload error: ${err.message}` 
+        });
+    }
+    if (err) {
+        return res.status(400).json({ 
+            success: false, 
+            message: err.message 
+        });
+    }
+    next();
+};
 
 // Generate JWT token
 const generateToken = (userId) => {
@@ -216,22 +254,52 @@ router.put('/profile', auth, async (req, res) => {
 // @route   POST /api/auth/upload-profile-image
 // @desc    Upload profile image
 // @access  Private
-router.post('/upload-profile-image', auth, upload.single('profileImage'), async (req, res) => {
+router.post('/upload-profile-image', auth, (req, res, next) => {
+    upload.single('profileImage')(req, res, (err) => {
+        if (err) {
+            return handleMulterError(err, req, res, next);
+        }
+        next();
+    });
+}, async (req, res) => {
     try {
+        console.log('📸 Upload request received');
+        console.log('📁 File:', req.file);
+        console.log('👤 User ID:', req.user._id);
+        
         if (!req.file) {
-            return res.status(400).json({ message: 'No file uploaded' });
+            return res.status(400).json({ 
+                success: false,
+                message: 'No file uploaded. Please select an image file.' 
+            });
         }
 
         const user = await User.findById(req.user._id);
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ 
+                success: false,
+                message: 'User not found' 
+            });
+        }
+
+        // Delete old profile image if exists
+        if (user.profileImage) {
+            const oldImagePath = path.join(__dirname, '../', user.profileImage);
+            if (fs.existsSync(oldImagePath)) {
+                fs.unlinkSync(oldImagePath);
+                console.log('🗑️ Deleted old profile image');
+            }
         }
 
         // Update user profile image path
-        user.profileImage = `/uploads/profiles/${req.file.filename}`;
+        const imagePath = `/uploads/profiles/${req.file.filename}`;
+        user.profileImage = imagePath;
         await user.save();
+        
+        console.log('✅ Image saved to database:', imagePath);
 
         res.json({
+            success: true,
             message: 'Profile image uploaded successfully',
             profileImage: user.profileImage,
             user: {
@@ -249,8 +317,12 @@ router.post('/upload-profile-image', auth, upload.single('profileImage'), async 
             }
         });
     } catch (error) {
-        console.error('Profile image upload error:', error);
-        res.status(500).json({ message: 'Server error during image upload' });
+        console.error('❌ Profile image upload error:', error);
+        res.status(500).json({ 
+            success: false,
+            message: 'Server error during image upload',
+            error: error.message 
+        });
     }
 });
 
