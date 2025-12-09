@@ -194,24 +194,46 @@ const AppContent = () => {
 
       {/* Toast notifications */}
       <Toaster
-        position="bottom-left"
+        position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        containerStyle={{
+          zIndex: 99999,
+        }}
         toastOptions={{
           duration: 3000,
           style: {
-            background: 'var(--toast-bg)',
-            color: 'var(--toast-color)',
-            border: '1px solid var(--toast-border)',
+            fontSize: '14px',
+            fontWeight: '500',
+            padding: '12px 16px',
+            borderRadius: '8px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            zIndex: 99999,
           },
           success: {
+            style: {
+              background: '#10b981',
+              color: '#ffffff',
+            },
             iconTheme: {
-              primary: '#10b981',
-              secondary: '#ffffff',
+              primary: '#ffffff',
+              secondary: '#10b981',
             },
           },
           error: {
+            style: {
+              background: '#ef4444',
+              color: '#ffffff',
+            },
             iconTheme: {
-              primary: '#ef4444',
-              secondary: '#ffffff',
+              primary: '#ffffff',
+              secondary: '#ef4444',
+            },
+          },
+          loading: {
+            style: {
+              background: '#3b82f6',
+              color: '#ffffff',
             },
           },
         }}

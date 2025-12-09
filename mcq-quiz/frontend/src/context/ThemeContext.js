@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const ThemeContext = createContext();
 
@@ -27,7 +28,17 @@ export const ThemeProvider = ({ children }) => {
   }, [darkMode]);
 
   const toggleDarkMode = () => {
-    setDarkMode(prev => !prev);
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    toast.success(newMode ? '🌙 Dark mode enabled' : '☀️ Light mode enabled', {
+      duration: 2000,
+      style: {
+        background: newMode ? '#1f2937' : '#ffffff',
+        color: newMode ? '#ffffff' : '#000000',
+        border: newMode ? '1px solid #374151' : '1px solid #e5e7eb',
+        zIndex: 9999,
+      },
+    });
   };
 
   const value = {

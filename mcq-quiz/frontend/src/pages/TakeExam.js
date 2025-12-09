@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useAuth } from '../context/AuthContext';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const TakeExam = () => {
   const { examId } = useParams();
@@ -20,6 +20,22 @@ const TakeExam = () => {
   useEffect(() => {
     fetchExamQuestions();
   }, [examId]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (!exam) return;
+      
+      if (e.key === 'ArrowRight' && currentQuestion < exam.questions.length - 1) {
+        setCurrentQuestion(prev => prev + 1);
+      } else if (e.key === 'ArrowLeft' && currentQuestion > 0) {
+        setCurrentQuestion(prev => prev - 1);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [exam, currentQuestion]);
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -60,6 +76,13 @@ const TakeExam = () => {
       ...prev,
       [questionIndex]: optionIndex
     }));
+    
+    // Auto-advance to next question after 500ms if not the last question
+    if (questionIndex < exam.questions.length - 1) {
+      setTimeout(() => {
+        setCurrentQuestion(questionIndex + 1);
+      }, 500);
+    }
   };
 
   const handleSubmitExam = async () => {
@@ -222,18 +245,40 @@ const TakeExam = () => {
                 <button
                   onClick={() => setCurrentQuestion(Math.max(0, currentQuestion - 1))}
                   disabled={currentQuestion === 0}
-                  className="px-6 py-2 bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-dark-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-dark-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 font-medium"
                 >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
                   Previous
                 </button>
                 
-                <button
-                  onClick={() => setCurrentQuestion(Math.min(exam.questions.length - 1, currentQuestion + 1))}
-                  disabled={currentQuestion === exam.questions.length - 1}
-                  className="px-6 py-2 bg-leetcode-orange text-white rounded-lg hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  Next
-                </button>
+                <div className="text-sm text-gray-500 dark:text-gray-400">
+                  Use arrow keys ← → to navigate
+                </div>
+                
+                {currentQuestion < exam.questions.length - 1 ? (
+                  <button
+                    onClick={() => setCurrentQuestion(currentQuestion + 1)}
+                    className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 font-medium shadow-md"
+                  >
+                    Next
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleSubmitExam}
+                    disabled={submitting}
+                    className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 font-medium shadow-md"
+                  >
+                    {submitting ? 'Submitting...' : 'Submit Exam'}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
           </div>
