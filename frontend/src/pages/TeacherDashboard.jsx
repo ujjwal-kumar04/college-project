@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext.jsx';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../components/Loading.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 import { formatRelativeTime, getExamStatus } from '../utils/helpers';
 
 const TeacherDashboard = () => {
@@ -35,7 +35,7 @@ const TeacherDashboard = () => {
   const fetchExams = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://onlinesubjectquiz.onrender.com/api/exams/teacher', {
+      const response = await axios.get('https://college-project-1-quch.onrender.com/api/exams/teacher', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const fetchedExams = response.data.exams;

@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const TestMode = () => {
-  const { category, topic } = useParams();
+  const { topic } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const { state } = location;
@@ -12,23 +12,26 @@ const TestMode = () => {
   const [userAnswers, setUserAnswers] = useState({});
   const [timeLeft, setTimeLeft] = useState(30 * 60); // 30 minutes in seconds
 
-  useEffect(() => {
-    if (timeLeft === 0) {
-      handleSubmit();
-    }
-    const timer = setInterval(() => {
-      setTimeLeft(prevTime => (prevTime > 0 ? prevTime - 1 : 0));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [timeLeft]);
-
   const handleAnswerSelect = (questionId, option) => {
     setUserAnswers(prev => ({ ...prev, [questionId]: option }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     navigate(`/mock-test/result`, { state: { questions: topicQuestions, userAnswers } });
-  };
+  }, [navigate, topicQuestions, userAnswers]);
+
+  useEffect(() => {
+    if (timeLeft === 0) {
+      handleSubmit();
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [handleSubmit, timeLeft]);
 
   const currentQuestion = topicQuestions[currentIndex];
 

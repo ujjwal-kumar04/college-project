@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext.jsx';
-import Loading from '../components/Loading.jsx';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { FaSearch, FaFilter, FaDownload, FaTrash, FaTimes, FaUpload } from 'react-icons/fa';
+import { FaDownload, FaFilter, FaSearch, FaTimes, FaTrash, FaUpload } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import Loading from '../components/Loading.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 
 const PreviousPapers = () => {
   const { user, api } = useAuth();
@@ -194,7 +194,7 @@ const PreviousPapers = () => {
       
       // Backend now proxies the file and streams it directly
       const token = localStorage.getItem('token');
-      const downloadUrl = `https://onlinesubjectquiz.onrender.com/api/previous-papers/download/${paper._id}`;
+      const downloadUrl = `https://college-project-1-quch.onrender.com/api/previous-papers/download/${paper._id}`;
       
       const response = await fetch(downloadUrl, {
         headers: {

@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Mic, MicOff, Play, Send, SquareTerminal, Volume2 } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -102,6 +102,7 @@ const AIInterviewSession = () => {
     bootstrap();
   }, [
     api,
+    interviewType,
     interviewMode,
     navigate,
     resumeInsights,
@@ -136,14 +137,6 @@ const AIInterviewSession = () => {
 
     return () => clearInterval(interval);
   }, [activeIndex, loading, questions.length, resetTranscript, submitting]);
-
-  useEffect(() => {
-    if (timer !== 0 || autoSubmittedRef.current === false || submitting) {
-      return;
-    }
-
-    handleSubmitAnswer(true);
-  }, [timer, submitting]);
 
   useEffect(() => {
     if (speechError) {
@@ -202,7 +195,7 @@ const AIInterviewSession = () => {
     }
   };
 
-  const handleSubmitAnswer = async (timedOut = false) => {
+  const handleSubmitAnswer = useCallback(async (timedOut = false) => {
     if (!currentQuestion || submitting) {
       return;
     }
@@ -260,7 +253,29 @@ const AIInterviewSession = () => {
     } finally {
       setSubmitting(false);
     }
-  };
+  }, [
+    activeIndex,
+    api,
+    currentQuestion,
+    isListening,
+    manualAnswer,
+    navigate,
+    questions.length,
+    savedAnswers,
+    sessionId,
+    stopListening,
+    submitting,
+    timer,
+    transcript,
+  ]);
+
+  useEffect(() => {
+    if (timer !== 0 || autoSubmittedRef.current === false || submitting) {
+      return;
+    }
+
+    handleSubmitAnswer(true);
+  }, [handleSubmitAnswer, submitting, timer]);
 
   if (loading) {
     return (

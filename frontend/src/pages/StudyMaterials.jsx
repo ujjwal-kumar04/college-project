@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext.jsx';
-import Loading from '../components/Loading.jsx';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import Loading from '../components/Loading.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 
 const StudyMaterials = () => {
   const { user, api } = useAuth();
@@ -196,7 +196,7 @@ const StudyMaterials = () => {
       
       // Backend now proxies the file and streams it directly
       const token = localStorage.getItem('token');
-      const downloadUrl = `https://onlinesubjectquiz.onrender.com/api/study-materials/download/${material._id}`;
+      const downloadUrl = `https://college-project-1-quch.onrender.com/api/study-materials/download/${material._id}`;
       
       const response = await fetch(downloadUrl, {
         headers: {
@@ -426,7 +426,7 @@ const StudyMaterials = () => {
                       </svg>
                       <span>File uploaded successfully!</span>
                       <a 
-                        href={`https://onlinesubjectquiz.onrender.com${formData.fileUrl}`}
+                        href={`https://college-project-1-quch.onrender.com${formData.fileUrl}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary-600 hover:underline touch-manipulation"
