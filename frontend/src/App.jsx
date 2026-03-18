@@ -30,8 +30,8 @@ import TakeExam from './pages/TakeExam.jsx';
 import TeacherDashboard from './pages/TeacherDashboard.jsx';
 import UserProfile from './pages/UserProfile.jsx';
 import VerifyEmail from './pages/VerifyEmail.jsx';
-import MockTestHome from './pages/mock-test/MockTestHome.jsx';
 import CategoryPage from './pages/mock-test/CategoryPage.jsx';
+import MockTestHome from './pages/mock-test/MockTestHome.jsx';
 import QuestionPage from './pages/mock-test/QuestionPage.jsx';
 import TestMode from './pages/mock-test/TestMode.jsx';
 import TestResult from './pages/mock-test/TestResult.jsx';
@@ -463,17 +463,10 @@ const AppContent = () => {
 
 // Main App Component
 function App() {
-  const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  
-  // Debug log for verification (remove in production)
-  console.log('Google Client ID loaded:', googleClientId ? 'Yes' : 'No');
-  
-  if (!googleClientId) {
-    console.error('REACT_APP_GOOGLE_CLIENT_ID is not defined in environment variables');
-  }
+  const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID || '404490721467-g8cuiqps7d6baq3qldnba1nbeu0suisd.apps.googleusercontent.com';
   
   return (
-    <GoogleOAuthProvider clientId={googleClientId || '156147048272-533837o45fjt5hcvskh3bh33nkc0hk72.apps.googleusercontent.com'}>
+    <GoogleOAuthProvider clientId={googleClientId}>
       <ThemeProvider>
         <Router>
           <AuthProvider>
