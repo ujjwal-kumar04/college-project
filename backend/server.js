@@ -15,14 +15,17 @@ if (!process.env.JWT_SECRET) {
 
 const app = express();
 
+const allowedOrigins = [
+    process.env.FRONTEND_URL,
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://online-subject-quiz.vercel.app'
+].filter(Boolean);
+
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: [
-        'http://localhost:3000',
-        'http://localhost:3001',
-        'https://online-subject-quiz.vercel.app'
-    ],
+    origin: allowedOrigins,
     credentials: true
 }));
 
