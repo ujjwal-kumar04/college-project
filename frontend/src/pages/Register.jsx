@@ -116,14 +116,14 @@ const Register = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-dark-950">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#0f172a]">
         <Loading text="Creating account..." />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-dark-950 flex items-center justify-center py-4 sm:py-8 px-3 sm:px-4">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0f172a] flex items-center justify-center py-4 sm:py-8 px-3 sm:px-4">
       <div className="max-w-md w-full">
         {/* Logo & Header */}
         <div className="text-center mb-6 sm:mb-8">
@@ -139,7 +139,7 @@ const Register = () => {
         </div>
 
         {/* Main Form Card */}
-        <div className="bg-white dark:bg-dark-900 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200 dark:border-dark-800 overflow-hidden">
+        <div className="bg-white dark:bg-[#1e293b] rounded-xl sm:rounded-2xl shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
           <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3 sm:space-y-4">
             {errors.submit && (
               <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
@@ -155,7 +155,7 @@ const Register = () => {
                 <label className={`cursor-pointer rounded-lg border-2 p-3 sm:p-4 text-center transition-all touch-manipulation active:scale-95 ${
                   formData.role === 'student' 
                     ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20' 
-                    : 'border-gray-300 dark:border-dark-700 hover:border-primary-300 dark:hover:border-dark-600'
+                    : 'border-gray-300 dark:border-slate-600 hover:border-primary-300 dark:hover:border-slate-500'
                 }`}>
                   <input
                     type="radio"
@@ -171,7 +171,7 @@ const Register = () => {
                 <label className={`cursor-pointer rounded-lg border-2 p-3 sm:p-4 text-center transition-all touch-manipulation active:scale-95 ${
                   formData.role === 'teacher' 
                     ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20' 
-                    : 'border-gray-300 dark:border-dark-700 hover:border-primary-300 dark:hover:border-dark-600'
+                    : 'border-gray-300 dark:border-slate-600 hover:border-primary-300 dark:hover:border-slate-500'
                 }`}>
                   <input
                     type="radio"
@@ -199,8 +199,8 @@ const Register = () => {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                  errors.name ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                  errors.name ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                 }`}
                 placeholder="Enter your full name"
               />
@@ -222,8 +222,8 @@ const Register = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                  errors.email ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                  errors.email ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                 }`}
                 placeholder="Enter your email"
               />
@@ -245,8 +245,8 @@ const Register = () => {
                   required
                   value={formData.department}
                   onChange={handleChange}
-                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                    errors.department ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                    errors.department ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                   }`}
                   placeholder="e.g., Computer Science"
                 />
@@ -267,8 +267,8 @@ const Register = () => {
                     required
                     value={formData.rollNumber}
                     onChange={handleChange}
-                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                      errors.rollNumber ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                      errors.rollNumber ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                     }`}
                     placeholder="e.g., 2021001"
                   />
@@ -288,8 +288,8 @@ const Register = () => {
                       required
                       value={formData.class}
                       onChange={handleChange}
-                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                        errors.class ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                        errors.class ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                       }`}
                       placeholder="CSE-A"
                     />
@@ -308,8 +308,8 @@ const Register = () => {
                       required
                       value={formData.semester}
                       onChange={handleChange}
-                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                        errors.semester ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                        errors.semester ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                       }`}
                       placeholder="1, 2, 3..."
                     />
@@ -334,8 +334,8 @@ const Register = () => {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                  errors.password ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                  errors.password ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                 }`}
                 placeholder="Create a password (min 6 characters)"
               />
@@ -357,8 +357,8 @@ const Register = () => {
                 required
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                  errors.confirmPassword ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                  errors.confirmPassword ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                 }`}
                 placeholder="Confirm your password"
               />
@@ -371,7 +371,7 @@ const Register = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 sm:py-3 px-4 bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-white rounded-full font-semibold text-sm sm:text-base transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation"
+            className="w-full py-2.5 sm:py-3 px-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-full font-semibold text-sm sm:text-base transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation"
           >
             {loading ? 'Creating Account...' : 'Create Account'}
           </button>
@@ -379,10 +379,10 @@ const Register = () => {
           {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200 dark:border-dark-700"></div>
+              <div className="w-full border-t border-gray-200 dark:border-slate-700"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-3 bg-white dark:bg-dark-900 text-gray-500 dark:text-gray-400">
+              <span className="px-3 bg-white dark:bg-[#1e293b] text-gray-500 dark:text-gray-400">
                 Or
               </span>
             </div>
@@ -402,7 +402,7 @@ const Register = () => {
         </form>
 
         {/* Sign in link */}
-        <div className="px-4 sm:px-6 py-3 sm:py-4 bg-gray-50 dark:bg-dark-800 border-t border-gray-200 dark:border-dark-700">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 bg-gray-50 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700">
           <p className="text-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
             Already have an account?{' '}
             <Link

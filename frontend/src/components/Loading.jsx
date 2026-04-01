@@ -10,7 +10,7 @@ const Loading = ({ size = 'lg', text = 'Loading...', fullScreen = false }) => {
 
   const Container = fullScreen ? 'div' : React.Fragment;
   const containerProps = fullScreen ? {
-    className: "fixed inset-0 bg-white dark:bg-dark-950 flex items-center justify-center z-50",
+    className: "fixed inset-0 bg-white dark:bg-[#0f172a] flex items-center justify-center z-50",
     role: "status",
     "aria-live": "polite",
     "aria-label": text
@@ -41,7 +41,7 @@ const Loading = ({ size = 'lg', text = 'Loading...', fullScreen = false }) => {
           </svg>
         </div>
         {text && (
-          <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 animate-pulse">
+          <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 animate-pulse">
             {text}
           </p>
         )}

@@ -1,16 +1,16 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  BrainCircuit,
-  ChevronRight,
-  Code2, Cpu,
-  Edit3,
-  History, Loader2,
-  Microchip, Network,
-  ShieldCheck,
-  Sparkles,
-  Terminal,
-  UploadCloud,
-  Zap
+    BrainCircuit,
+    ChevronRight,
+    Code2, Cpu,
+    Edit3,
+    History, Loader2,
+    Microchip, Network,
+    ShieldCheck,
+    Sparkles,
+    Terminal,
+    UploadCloud,
+    Zap
 } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -155,7 +155,7 @@ const AIInterviewPractice = () => {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-200 selection:bg-primary-500/30">
+    <div className="min-h-screen bg-secondary-50 dark:bg-[#0f172a] dark:bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.14),_transparent_38%)] text-secondary-900 dark:text-slate-100 selection:bg-primary-500/30">
       <main className="relative z-10 max-w-7xl mx-auto px-6 py-12 lg:py-20">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           {/* Left Column */}
@@ -187,9 +187,9 @@ const AIInterviewPractice = () => {
 
           {/* Right Column */}
          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="lg:col-span-7">
-  <div className="p-[1px] rounded-[2.5rem] bg-gradient-to-b from-secondary-200 dark:from-secondary-700/40 to-transparent backdrop-blur-2xl">
+  <div className="p-[1px] rounded-[2.5rem] bg-gradient-to-b from-secondary-200 dark:from-slate-700/30 to-transparent backdrop-blur-2xl">
     
-    <div className="bg-white dark:bg-secondary-900 rounded-[2.3rem] p-8 lg:p-10 border border-secondary-200 dark:border-secondary-700 shadow-2xl">
+    <div className="bg-white dark:bg-[#1e293b] rounded-[2.3rem] p-8 lg:p-10 border border-secondary-200 dark:border-slate-700 shadow-2xl dark:shadow-[0_20px_60px_rgba(0,0,0,0.55)]">
 
       {/* 1. Branch Selector */}
       <section className="mb-8">
@@ -206,7 +206,7 @@ const AIInterviewPractice = () => {
               className={`py-3 px-2 rounded-xl border transition-all flex flex-col items-center gap-2 ${
                 activeBranch.id === branch.id
                   ? 'border-primary-500 bg-primary-500/10 text-secondary-900 dark:text-white shadow-[0_0_15px_rgba(99,102,241,0.1)]'
-                  : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-800 text-secondary-600 dark:text-secondary-400 hover:border-primary-500/50'
+                  : 'border-secondary-200 dark:border-slate-700 bg-white dark:bg-[#24324a] text-secondary-600 dark:text-slate-300 hover:border-primary-500/50'
               }`}
             >
               {branch.icon}
@@ -233,8 +233,8 @@ const AIInterviewPractice = () => {
                 onClick={() => setSelectedRole(role.value)}
                 className={`relative p-4 rounded-2xl border transition-all text-left ${
                   selectedRole === role.value
-                    ? 'border-primary-500 bg-secondary-100 dark:bg-secondary-800 ring-1 ring-primary-500'
-                    : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 hover:border-primary-500/40'
+                    ? 'border-primary-500 bg-secondary-100 dark:bg-[#24324a] ring-1 ring-primary-500'
+                    : 'border-secondary-200 dark:border-slate-700 bg-white dark:bg-[#1e293b] hover:border-primary-500/40'
                 }`}
               >
                 <div className="flex items-start gap-3">
@@ -265,7 +265,7 @@ const AIInterviewPractice = () => {
             className={`p-4 rounded-2xl border transition-all text-left flex items-center gap-3 ${
               selectedRole === 'other'
                 ? 'border-accent-yellow bg-accent-yellow/10 ring-1 ring-accent-yellow'
-                : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 hover:border-accent-yellow/40'
+                : 'border-secondary-200 dark:border-slate-700 bg-white dark:bg-[#1e293b] hover:border-accent-yellow/40'
             }`}
           >
             <div className={`p-2 rounded-lg ${
@@ -297,7 +297,7 @@ const AIInterviewPractice = () => {
                   placeholder="Ex: Cloud Architect, Product Designer..."
                   value={customRole}
                   onChange={(e) => setCustomRole(e.target.value)}
-                  className="w-full bg-white dark:bg-secondary-900 border border-secondary-200 dark:border-secondary-700 rounded-xl py-3 px-4 text-sm text-secondary-900 dark:text-white outline-none focus:border-accent-yellow transition-all"
+                  className="w-full bg-white dark:bg-[#1e293b] border border-secondary-200 dark:border-slate-700 rounded-xl py-3 px-4 text-sm text-secondary-900 dark:text-white outline-none focus:border-accent-yellow transition-all"
                 />
               </div>
             </motion.div>
@@ -320,7 +320,7 @@ const AIInterviewPractice = () => {
               className={`p-4 rounded-2xl border transition-all text-left ${
                 interviewType === type.value
                   ? `border-primary-500 bg-primary-500/10 ring-1 ring-primary-500`
-                  : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 hover:border-primary-500/40'
+                  : 'border-secondary-200 dark:border-slate-700 bg-white dark:bg-[#1e293b] hover:border-primary-500/40'
               }`}
             >
               <p className="font-bold text-secondary-900 dark:text-white text-sm">{type.label}</p>
@@ -336,15 +336,15 @@ const AIInterviewPractice = () => {
           <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary-500 text-[10px] text-white font-black">04</span>
           Difficulty Level
         </h3>
-        <div className="flex items-center gap-3 bg-secondary-100 dark:bg-secondary-800 p-1.5 rounded-full">
+        <div className="flex items-center gap-3 bg-secondary-100 dark:bg-[#1f2b3d] p-1.5 rounded-full">
           {difficulties.map((d) => (
             <button
               key={d.value}
               onClick={() => setDifficulty(d.value)}
               className={`w-full text-center py-2.5 rounded-full text-sm font-bold transition-all ${
                 difficulty === d.value
-                  ? `bg-white dark:bg-secondary-900 shadow-sm text-primary-500`
-                  : 'text-secondary-500 hover:bg-white/50 dark:hover:bg-secondary-700/50'
+                  ? `bg-white dark:bg-[#0f172a] shadow-sm text-primary-500`
+                  : 'text-secondary-500 hover:bg-white/50 dark:hover:bg-slate-800/60'
               }`}
             >
               {d.label}
@@ -365,7 +365,7 @@ const AIInterviewPractice = () => {
             className={`p-4 rounded-2xl border transition-all text-left ${
               interviewMode === 'without-resume'
                 ? 'border-primary-500 bg-primary-500/10 ring-1 ring-primary-500'
-                : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 hover:border-primary-500/40'
+                : 'border-secondary-200 dark:border-slate-700 bg-white dark:bg-[#1e293b] hover:border-primary-500/40'
             }`}
           >
             <p className="font-bold text-secondary-900 dark:text-white text-sm">Standard Mode</p>
@@ -376,7 +376,7 @@ const AIInterviewPractice = () => {
             className={`p-4 rounded-2xl border transition-all text-left ${
               interviewMode === 'with-resume'
                 ? 'border-primary-500 bg-primary-500/10 ring-1 ring-primary-500'
-                : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 hover:border-primary-500/40'
+                : 'border-secondary-200 dark:border-slate-700 bg-white dark:bg-[#1e293b] hover:border-primary-500/40'
             }`}
           >
             <p className="font-bold text-secondary-900 dark:text-white text-sm">Resume-Based</p>
@@ -394,7 +394,7 @@ const AIInterviewPractice = () => {
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden mb-10"
           >
-            <div className="border-2 border-dashed border-secondary-300 dark:border-secondary-700 rounded-2xl p-6 text-center">
+            <div className="border-2 border-dashed border-secondary-300 dark:border-slate-700 rounded-2xl p-6 text-center bg-white dark:bg-[#1e293b]">
               <label htmlFor="resume-upload" className="cursor-pointer">
                 <div className="flex flex-col items-center justify-center">
                   <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-500/20 flex items-center justify-center mb-3">

@@ -116,23 +116,23 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-purple-400 via-purple-300 to-blue-200 py-4 sm:py-8 px-2 sm:px-4">
-      <div className="w-full max-w-4xl bg-white/80 rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#0f172a] py-4 sm:py-8 px-2 sm:px-4">
+      <div className="w-full max-w-5xl bg-white dark:bg-[#1e293b] rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row overflow-hidden">
         {/* Left: Illustration and Welcome */}
-        <div className="md:w-1/2 flex flex-col justify-between items-center bg-gradient-to-br from-purple-500 via-purple-400 to-purple-300 p-8 md:p-10 text-white relative">
+        <div className="md:w-1/2 flex flex-col justify-between items-center bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 p-8 md:p-10 text-white relative">
           <img src={loginIllustration} alt="Login Illustration" className="w-48 h-48 object-contain mx-auto mb-6 drop-shadow-xl" />
           <div className="flex-1 flex flex-col justify-center items-center">
             <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-center">Hello Friends!</h2>
             <p className="text-base sm:text-lg mb-6 text-center">Come on, register yourself and start connecting with us</p>
             <div className="flex flex-col items-center mt-4">
               <span className="text-2xl animate-bounce">⬇️</span>
-              <Link to="/register" className="mt-2 text-white font-semibold underline text-lg hover:text-purple-200 transition">Sign Up</Link>
+              <Link to="/register" className="mt-2 text-white font-semibold underline text-lg hover:text-blue-100 transition">Sign Up</Link>
             </div>
           </div>
         </div>
         {/* Right: Login Form */}
-        <div className="md:w-1/2 flex flex-col justify-center p-6 sm:p-10 bg-white">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 text-center">Login</h1>
+        <div className="md:w-1/2 flex flex-col justify-center p-6 sm:p-10 bg-white dark:bg-[#1e293b]">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">Login</h1>
           <div className="flex flex-col gap-4">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <GoogleLogin
@@ -190,8 +190,8 @@ const Login = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                  errors.email ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                  errors.email ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                 }`}
                 placeholder="Enter your email"
               />
@@ -214,8 +214,8 @@ const Login = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 sm:pr-12 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-dark-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all ${
-                    errors.password ? 'border-red-500' : 'border-gray-300 dark:border-dark-700'
+                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 sm:pr-12 border rounded-lg text-sm sm:text-base bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                    errors.password ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                   }`}
                   placeholder="Enter your password"
                 />
@@ -245,7 +245,7 @@ const Login = () => {
               <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 sm:py-3 px-4 bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-white rounded-full font-semibold text-sm sm:text-base transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation"
+              className="w-full py-2.5 sm:py-3 px-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-full font-semibold text-sm sm:text-base transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation"
             >
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
@@ -253,10 +253,10 @@ const Login = () => {
               {/* Divider */}
               <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-200 dark:border-dark-700"></div>
+                <div className="w-full border-t border-gray-200 dark:border-slate-700"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-3 bg-white dark:bg-dark-900 text-gray-500 dark:text-gray-400">
+                <span className="px-3 bg-white dark:bg-[#1e293b] text-gray-500 dark:text-gray-400">
                   Or
                 </span>
               </div>

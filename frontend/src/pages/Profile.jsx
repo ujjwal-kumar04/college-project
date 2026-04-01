@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext.jsx';
-import { FaCamera, FaTrash, FaCalendar } from 'react-icons/fa';
 import axios from 'axios';
-import Loading from '../components/Loading.jsx';
+import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaCalendar, FaCamera, FaTrash } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import Loading from '../components/Loading.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 
 const Profile = () => {
-  const { user, token, updateProfile, loading, api } = useAuth();
+  const { user, token, updateProfile, loading, api, refetchUser } = useAuth();
   const [uploading, setUploading] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [stats, setStats] = useState({ totalPosts: 0, totalLikes: 0, totalReplies: 0 });
@@ -155,15 +155,14 @@ const Profile = () => {
       const formData = new FormData();
       formData.append('profilePicture', file);
 
-      const response = await api.post('/auth/upload-profile-picture', formData, {
+      await api.post('/auth/upload-profile-picture', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
 
-      const updatedUser = { ...user, profileImage: response.data.profileImage };
-      localStorage.setItem('user', JSON.stringify(updatedUser));
-      window.location.reload();
+      // Refetch user data to update profile image without page reload
+      await refetchUser();
 
       toast.success('Profile picture updated successfully!');
     } catch (error) {
@@ -192,9 +191,8 @@ const Profile = () => {
     try {
       await api.delete('/auth/delete-profile-picture');
 
-      const updatedUser = { ...user, profileImage: '' };
-      localStorage.setItem('user', JSON.stringify(updatedUser));
-      window.location.reload();
+      // Refetch user data to update profile image without page reload
+      await refetchUser();
 
       toast.success('Profile picture deleted successfully!');
     } catch (error) {

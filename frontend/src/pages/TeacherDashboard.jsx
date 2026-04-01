@@ -66,7 +66,7 @@ const TeacherDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-dark-950">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#0f172a]">
         <div className="max-w-7xl mx-auto py-8">
           <Loading text="Loading dashboard..." />
         </div>
@@ -75,7 +75,7 @@ const TeacherDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-dark-950">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0f172a]">
       <div className="max-w-6xl mx-auto py-4 sm:py-6 px-3 sm:px-4">
         {/* Header */}
         <div className="mb-6 sm:mb-8">
@@ -89,22 +89,22 @@ const TeacherDashboard = () => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 mb-6 sm:mb-8">
-          <div className="bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-800 rounded-xl sm:rounded-2xl p-3 sm:p-6 hover:border-primary-500 dark:hover:border-primary-500 transition-all">
+          <div className="bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 rounded-xl sm:rounded-2xl p-3 sm:p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-all">
             <p className="text-[10px] sm:text-xs font-medium text-gray-500 dark:text-gray-400">Total Exams</p>
             <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1 sm:mt-2">{stats.totalExams}</p>
           </div>
 
-          <div className="bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-800 rounded-xl sm:rounded-2xl p-3 sm:p-6 hover:border-primary-500 dark:hover:border-primary-500 transition-all">
+          <div className="bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 rounded-xl sm:rounded-2xl p-3 sm:p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-all">
             <p className="text-[10px] sm:text-xs font-medium text-gray-500 dark:text-gray-400">Active Exams</p>
             <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1 sm:mt-2">{stats.activeExams}</p>
           </div>
 
-          <div className="bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-800 rounded-xl sm:rounded-2xl p-3 sm:p-6 hover:border-primary-500 dark:hover:border-primary-500 transition-all">
+          <div className="bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 rounded-xl sm:rounded-2xl p-3 sm:p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-all">
             <p className="text-[10px] sm:text-xs font-medium text-gray-500 dark:text-gray-400">Total Participants</p>
             <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1 sm:mt-2">{stats.totalParticipants}</p>
           </div>
 
-          <div className="bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-800 rounded-xl sm:rounded-2xl p-3 sm:p-6 hover:border-primary-500 dark:hover:border-primary-500 transition-all">
+          <div className="bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 rounded-xl sm:rounded-2xl p-3 sm:p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-all">
             <p className="text-[10px] sm:text-xs font-medium text-gray-500 dark:text-gray-400">Avg. Performance</p>
             <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1 sm:mt-2">{stats.averagePerformance}%</p>
           </div>
@@ -114,7 +114,7 @@ const TeacherDashboard = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
           <button
             onClick={() => navigate('/create-exam')}
-            className="bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-primary-500 dark:hover:border-primary-500 active:scale-95 transition-all text-left touch-manipulation"
+            className="bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-blue-500 dark:hover:border-blue-500 active:scale-95 transition-all text-left touch-manipulation"
           >
             <div className="flex items-center space-x-3 sm:space-x-4">
               <span className="text-2xl sm:text-3xl">➕</span>
@@ -126,7 +126,7 @@ const TeacherDashboard = () => {
           </button>
           <button
             onClick={() => navigate('/study-materials')}
-            className="bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-primary-500 dark:hover:border-primary-500 active:scale-95 transition-all text-left touch-manipulation"
+            className="bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-blue-500 dark:hover:border-blue-500 active:scale-95 transition-all text-left touch-manipulation"
           >
             <div className="flex items-center space-x-3 sm:space-x-4">
               <span className="text-2xl sm:text-3xl">📚</span>
@@ -138,7 +138,7 @@ const TeacherDashboard = () => {
           </button>
           <button
             onClick={() => navigate('/previous-papers')}
-            className="bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-primary-500 dark:hover:border-primary-500 active:scale-95 transition-all text-left touch-manipulation sm:col-span-2 lg:col-span-1"
+            className="bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-blue-500 dark:hover:border-blue-500 active:scale-95 transition-all text-left touch-manipulation sm:col-span-2 lg:col-span-1"
           >
             <div className="flex items-center space-x-3 sm:space-x-4">
               <span className="text-2xl sm:text-3xl">📄</span>
@@ -154,16 +154,16 @@ const TeacherDashboard = () => {
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4 sm:mb-6">
             <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Recent Exams</h2>
-            <Link to="/create-exam" className="px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base bg-primary-500 text-white font-semibold rounded-full hover:bg-primary-600 active:bg-primary-700 transition-all text-center touch-manipulation">
+            <Link to="/create-exam" className="px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 active:bg-blue-800 transition-all text-center touch-manipulation">
               Create New Exam
             </Link>
           </div>
 
           {exams.length === 0 ? (
-            <div className="bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-800 rounded-xl sm:rounded-2xl text-center py-8 sm:py-12 px-4">
+            <div className="bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 rounded-xl sm:rounded-2xl text-center py-8 sm:py-12 px-4">
               <h3 className="text-base sm:text-lg font-medium text-gray-900 dark:text-white mb-2">No exams yet</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Create your first exam to get started</p>
-              <Link to="/create-exam" className="inline-block px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base bg-primary-500 text-white font-semibold rounded-full hover:bg-primary-600 active:bg-primary-700 transition-all touch-manipulation">
+              <Link to="/create-exam" className="inline-block px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 active:bg-blue-800 transition-all touch-manipulation">
                 Create Your First Exam
               </Link>
             </div>
@@ -172,7 +172,7 @@ const TeacherDashboard = () => {
               {exams.slice(0, 6).map((exam) => {
                 const statusInfo = getExamStatus(exam);
                 return (
-                  <div key={exam._id} className="bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-primary-500 dark:hover:border-primary-500 transition-all">
+                  <div key={exam._id} className="bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-all">
                     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 lg:gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start gap-2 sm:gap-3 mb-2">
@@ -186,10 +186,10 @@ const TeacherDashboard = () => {
                         <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-6 gap-y-1 sm:gap-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                           <div className="flex items-center gap-1 sm:gap-2">
                             <span>Key:</span>
-                            <span className="font-mono bg-gray-100 dark:bg-dark-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs">{exam.examKey}</span>
+                            <span className="font-mono bg-gray-100 dark:bg-slate-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs">{exam.examKey}</span>
                             <button 
                               onClick={() => copyExamKey(exam.examKey)} 
-                              className="p-0.5 sm:p-1 rounded-md hover:bg-gray-200 dark:hover:bg-dark-700 active:scale-95 transition-all touch-manipulation"
+                              className="p-0.5 sm:p-1 rounded-md hover:bg-gray-200 dark:hover:bg-slate-700 active:scale-95 transition-all touch-manipulation"
                             >
                               <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -204,7 +204,7 @@ const TeacherDashboard = () => {
                       
                       <Link 
                         to={`/results/${exam._id}`}
-                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-primary-500 hover:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 whitespace-nowrap text-center sm:text-left border border-primary-500 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all touch-manipulation"
+                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-blue-600 hover:text-blue-700 active:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200 whitespace-nowrap text-center sm:text-left border border-blue-500 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all touch-manipulation"
                       >
                         View Results →
                       </Link>

@@ -19,6 +19,7 @@ import DetailedResult from './pages/DetailedResult.jsx';
 import ExamResults from './pages/ExamResults.jsx';
 import ForumList from './pages/ForumList.jsx';
 import ForumThread from './pages/ForumThread.jsx';
+import LandingPage from './pages/LandingPage.jsx';
 import Login from './pages/Login.jsx';
 import PreviousPapers from './pages/PreviousPapers.jsx';
 import Profile from './pages/Profile.jsx';
@@ -80,7 +81,7 @@ const NotFound = () => {
   const navigate = useNavigate();
   
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-dark-950 animate-fadeIn">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#0f172a] animate-fadeIn">
       <div className="text-center px-4">
         <div className="inline-block">
           <h1 className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600 mb-4">
@@ -129,7 +130,7 @@ const AppContent = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-dark-950 transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0f172a] transition-colors duration-200">
       {isAuthenticated && <Navbar />}
       
       <Routes>
@@ -356,7 +357,7 @@ const AppContent = () => {
                 <Navigate to="/select-role" replace />
               )
             ) : (
-              <Navigate to="/login" replace />
+              <LandingPage />
             )
           } 
         />
@@ -381,7 +382,7 @@ const AppContent = () => {
           className: '',
           duration: 3500,
           style: {
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
             color: '#ffffff',
             WebkitTextFillColor: '#ffffff',
             border: '2px solid rgba(255, 255, 255, 0.4)',

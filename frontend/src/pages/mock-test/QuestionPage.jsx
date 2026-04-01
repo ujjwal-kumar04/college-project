@@ -26,13 +26,13 @@ const QuestionPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-950 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-secondary-50 dark:bg-[#0f172a] p-4 sm:p-6 lg:p-8 text-secondary-900 dark:text-slate-100">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white dark:bg-secondary-900 rounded-xl shadow-lg p-8">
+        <div className="bg-white dark:bg-[#1e293b] rounded-xl shadow-lg p-8 border border-secondary-200 dark:border-slate-700">
           <h2 className="text-2xl font-bold text-secondary-900 dark:text-white mb-2">{currentQuestion.topic}</h2>
-          <p className="text-secondary-600 dark:text-secondary-400 mb-6">Question {currentIndex + 1} of {topicQuestions.length}</p>
+          <p className="text-secondary-600 dark:text-slate-300 mb-6">Question {currentIndex + 1} of {topicQuestions.length}</p>
           
-          <div className="text-lg text-secondary-800 dark:text-secondary-200 mb-6" style={{ whiteSpace: 'pre-wrap' }}>
+          <div className="text-lg text-secondary-800 dark:text-slate-100 mb-6" style={{ whiteSpace: 'pre-wrap' }}>
             {currentQuestion.question}
           </div>
 
@@ -40,8 +40,8 @@ const QuestionPage = () => {
             {currentQuestion.options.map((option, index) => (
               <div key={index} className="flex items-center">
                 <input type="radio" name="option" id={`option${index}`} className="hidden" />
-                <label htmlFor={`option${index}`} className="flex items-center cursor-pointer text-secondary-700 dark:text-secondary-300">
-                  <span className="w-6 h-6 inline-block mr-3 border border-secondary-300 dark:border-secondary-600 rounded-full"></span>
+                <label htmlFor={`option${index}`} className="flex items-center cursor-pointer text-secondary-700 dark:text-slate-200">
+                  <span className="w-6 h-6 inline-block mr-3 border border-secondary-300 dark:border-slate-600 rounded-full"></span>
                   {option}
                 </label>
               </div>
@@ -49,22 +49,22 @@ const QuestionPage = () => {
           </div>
 
           {showAnswer && (
-            <div className="bg-secondary-100 dark:bg-secondary-800 p-4 rounded-lg mb-6">
+            <div className="bg-secondary-100 dark:bg-slate-800/80 p-4 rounded-lg mb-6 border border-secondary-200 dark:border-slate-700">
               <p className="font-bold text-secondary-900 dark:text-white">Answer: {currentQuestion.answer}</p>
-              <p className="mt-2 text-secondary-700 dark:text-secondary-300">{currentQuestion.explanation}</p>
+              <p className="mt-2 text-secondary-700 dark:text-slate-300">{currentQuestion.explanation}</p>
             </div>
           )}
 
           <div className="flex items-center justify-between">
             <button 
               onClick={() => setShowAnswer(true)}
-              className="bg-primary-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-primary-600 transition-colors"
+              className="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
             >
               Show Answer
             </button>
             <button 
               onClick={handleNext}
-              className="bg-secondary-200 dark:bg-secondary-700 text-secondary-800 dark:text-secondary-200 font-bold py-2 px-6 rounded-lg hover:bg-secondary-300 dark:hover:bg-secondary-600 transition-colors"
+              className="bg-slate-200 dark:bg-slate-700 text-secondary-800 dark:text-slate-100 font-bold py-2 px-6 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
             >
               Next Question
             </button>

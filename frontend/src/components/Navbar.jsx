@@ -35,7 +35,7 @@ const Navbar = () => {
       ];
 
   return (
-    <nav className="navbar sticky top-0 z-50">
+    <nav className="navbar sticky top-0 z-50 bg-white/85 dark:bg-[#0f172a]/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -58,8 +58,8 @@ const Navbar = () => {
                 to={link.path}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
                   location.pathname === link.path
-                    ? 'bg-gradient-to-r from-primary-100 to-primary-50 dark:from-primary-900/30 dark:to-primary-800/20 text-primary-700 dark:text-primary-300 shadow-sm border border-primary-200 dark:border-primary-700'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-800 hover:text-gray-900 dark:hover:text-white'
+                    ? 'bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-200 shadow-sm border border-blue-100 dark:border-slate-700'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
                 aria-current={location.pathname === link.path ? 'page' : undefined}
               >
@@ -69,6 +69,7 @@ const Navbar = () => {
                 <span>{link.name}</span>
               </Link>
             ))}
+            
           </div>
 
           {/* Right side controls - Twitter Style Professional */}
@@ -76,7 +77,7 @@ const Navbar = () => {
             {/* Dark mode toggle - Beautiful Twitter Style */}
             <button
               onClick={toggleDarkMode}
-              className="group relative p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 ease-in-out"
+              className="group relative p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 ease-in-out"
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {darkMode ? (
@@ -96,7 +97,7 @@ const Navbar = () => {
             {/* Profile Button - Desktop - Elegant Design */}
             <button
               onClick={() => navigate('/profile')}
-              className="hidden md:flex items-center gap-2.5 pl-2.5 pr-3 py-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-dark-800/80 transition-all duration-200 ease-in-out group"
+              className="hidden md:flex items-center gap-2.5 pl-2.5 pr-3 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all duration-200 ease-in-out group"
               aria-label="Go to profile"
             >
               {user?.profileImage ? (
@@ -120,7 +121,7 @@ const Navbar = () => {
             {/* Logout Button - Desktop - Premium Design */}
             <button
               onClick={handleLogout}
-              className="hidden md:flex items-center justify-center p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 ease-in-out group"
+              className="hidden md:flex items-center justify-center p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 ease-in-out group"
               aria-label="Logout"
               title="Sign out"
             >
@@ -132,7 +133,7 @@ const Navbar = () => {
             {/* Mobile menu button - Professional Design */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-800 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500/50 group"
+              className="md:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500/50 group"
               aria-expanded={isMobileMenuOpen}
               aria-label="Toggle mobile menu"
             >
@@ -151,7 +152,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-200 dark:border-dark-700 animate-fadeIn">
+        <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur animate-fadeIn">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navLinks.map((link) => (
               <Link
@@ -159,8 +160,8 @@ const Navbar = () => {
                 to={link.path}
                 className={`flex items-center space-x-3 px-3 py-3 rounded-lg text-base font-medium transition-colors duration-200 ${
                   location.pathname === link.path
-                    ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-800 hover:text-gray-900 dark:hover:text-white'
+                    ? 'bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-200'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
                 aria-current={location.pathname === link.path ? 'page' : undefined}
               >
@@ -172,10 +173,22 @@ const Navbar = () => {
             ))}
             
             {/* Mobile Profile & Logout - Professional Design */}
-            <div className="border-t border-gray-200 dark:border-dark-700 pt-2 mt-2">
+            <div className="border-t border-slate-200 dark:border-slate-800 pt-2 mt-2">
+              {user?.role === 'student' && (
+                <Link
+                  to="/ai-interview"
+                  className="group flex items-center space-x-3 px-3 py-3 rounded-lg text-base font-medium text-blue-600 dark:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.868v4.264a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Start Interview</span>
+                </Link>
+              )}
               <Link
                 to="/profile"
-                className="group flex items-center space-x-3 px-3 py-3 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
+                className="group flex items-center space-x-3 px-3 py-3 rounded-lg text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
               >
                 <svg className="w-5 h-5 transform group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />

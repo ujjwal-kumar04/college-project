@@ -6,11 +6,11 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  @apply bg-secondary-50 text-secondary-900;
+  @apply bg-slate-50 text-slate-900;
 }
 
 .dark body {
-  @apply bg-secondary-900 text-secondary-100;
+  @apply bg-[#0f172a] text-slate-100;
 }
 
 /* Toast Notifications Styling - Enhanced for Mobile & Desktop */
@@ -148,16 +148,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-50 dark:bg-dark-900;
+  @apply bg-slate-100 dark:bg-slate-900;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-dark-600 rounded-full;
+  @apply bg-slate-300 dark:bg-slate-600 rounded-full;
   transition: background-color 0.2s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-500 dark:bg-primary-600;
+  @apply bg-blue-500 dark:bg-blue-500;
 }
 
 /* Custom animations */
@@ -195,11 +195,11 @@ body {
 /* Custom components */
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-medium py-2 px-4 sm:py-2.5 sm:px-5 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-dark-900 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] text-sm sm:text-base;
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 sm:py-2.5 sm:px-5 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] text-sm sm:text-base;
   }
   
   .btn-secondary {
-    @apply bg-gray-100 hover:bg-gray-200 dark:bg-dark-700 dark:hover:bg-dark-600 text-gray-900 dark:text-gray-100 font-medium py-1.5 px-3 sm:py-2 sm:px-4 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 text-sm sm:text-base;
+    @apply bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-900 dark:text-slate-100 font-medium py-1.5 px-3 sm:py-2 sm:px-4 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 text-sm sm:text-base;
   }
   
   .btn-danger {
@@ -207,26 +207,26 @@ body {
   }
   
   .input-field {
-    @apply w-full px-2.5 py-2 sm:px-3 sm:py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-dark-800 text-gray-900 dark:text-gray-100 transition-all duration-200 text-sm sm:text-base;
+    @apply w-full px-2.5 py-2 sm:px-3 sm:py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 transition-all duration-200 text-sm sm:text-base;
   }
   
   .card {
-    @apply bg-white dark:bg-dark-850 rounded-xl shadow-sm border border-gray-200 dark:border-dark-700 p-4 sm:p-6 transition-all duration-300;
+    @apply bg-[#f9fafb] dark:bg-[#1e293b] rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 sm:p-6 transition-all duration-300;
     backdrop-filter: blur(10px);
   }
   
   .card-hover {
-    @apply hover:shadow-xl hover:border-primary-300 dark:hover:border-primary-700 hover:-translate-y-1 cursor-pointer;
+    @apply hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-500 hover:-translate-y-1 cursor-pointer;
   }
   
   .navbar {
-    @apply bg-white/95 dark:bg-dark-900/95 border-b border-gray-200 dark:border-dark-700;
+    @apply bg-white/95 dark:bg-[#0f172a]/95 border-b border-slate-200 dark:border-slate-800;
     backdrop-filter: blur(12px);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
   
   .sidebar {
-    @apply bg-white dark:bg-dark-900 border-r border-gray-200 dark:border-dark-700;
+    @apply bg-white dark:bg-[#1e293b] border-r border-slate-200 dark:border-slate-700;
   }
   
   .text-muted {
@@ -258,12 +258,10 @@ body {
   }
 }
 
-/* Global styles with gradient backgrounds */
+/* Global typography and accessibility base */
 body {
   @apply font-sans antialiased;
-  @apply bg-gradient-to-br from-gray-50 to-gray-100 dark:from-dark-950 dark:via-dark-925 dark:to-dark-900;
   min-height: 100vh;
-  /* Prevent text size adjustment on mobile devices */
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
